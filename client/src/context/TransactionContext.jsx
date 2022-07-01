@@ -35,7 +35,7 @@ export const TrasacationProvider = ({ children }) => {
     try {
       if (!ethereum) return alert("Please Install Metamask");
       const transactionContract = getEthereumContract();
-      const availableTransactions = await transactionContract.getAllTransactions();
+      const availableTransactions = await transactionContract.getAllTranscations();
       const structuredTransactions = availableTransactions.map((transaction) => ({
         addressTo: transaction.receiver,
         addressFrom: transaction.sender,
@@ -75,7 +75,7 @@ export const TrasacationProvider = ({ children }) => {
   const checkIfTransactionsExist = async () => {
     try {
       const transactionContract = getEthereumContract();
-      const currentTransactionCount = await transactionContract.getTransactionCount();
+      const currentTransactionCount = await transactionContract.getAllTranscationsCount();
 
       window.localStorage.setItem("transactionCount",currentTransactionCount)
     } catch (error) {
@@ -116,7 +116,7 @@ export const TrasacationProvider = ({ children }) => {
         } ]
       });
 
-      const transactionHash = await transactionContract.addToBlockchain(addressTo,parsedAmount,message,keyword);
+      const transactionHash = await transactionContract.addToBlockChain(addressTo,parsedAmount,message,keyword);
       
       setIsLoading(true);
 
@@ -126,7 +126,7 @@ export const TrasacationProvider = ({ children }) => {
 
       console.log(`Success - ${transactionHash.hash}`);
 
-      const transactionCount = await transactionContract.getTransactionCount();
+      const transactionCount = await transactionContract.getAllTranscationsCount();
       setTransactionCount(transactionCount.toNumber());
 
       window.reload();
@@ -148,3 +148,6 @@ export const TrasacationProvider = ({ children }) => {
     </TransactionContext.Provider>
   );
 };
+
+
+// 0x28004830525d8a75830281704f672ecC100f07eC
