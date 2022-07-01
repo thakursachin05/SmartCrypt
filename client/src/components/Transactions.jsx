@@ -25,7 +25,7 @@ const TransactionCard = ({addressTo , addressFrom, timestamp, message, keyword, 
                     </a>
                     <a href= {`https://goerli.etherscan.io/address${addressTo}`} target="_blank" rel='noopener noreferrer'>
                     <p className='text-white text-base'>
-                        To: {shortenAddress(addressTo)}
+                        To: {addressTo}
                     </p>
                     </a>
                     <p className='text-white text-base'>Amount : {amount} ETH</p>
