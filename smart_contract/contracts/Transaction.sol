@@ -25,11 +25,11 @@ contract Transactions {
         emit Transfer(msg.sender , reciever, amount,message,block.timestamp,keyword);
 
     }
-    function getAllTranscations() public view returns (TransferStruct[] memory){
+    function getAllTransactions() public view returns (TransferStruct[] memory){
         return transactions;
 
     }
-    function getAllTranscationsCount() public view returns (uint256) { 
+    function getTransactionsCount() public view returns (uint256) { 
             return transactionCount;
     }
 }
