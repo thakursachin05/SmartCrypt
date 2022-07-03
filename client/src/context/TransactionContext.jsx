@@ -33,7 +33,7 @@ export const TrasacationProvider = ({ children }) => {
 
   const getAllTransactions = async () => {
     try {
-      if (!ethereum) return alert("Please Install Metamask");
+      if (!ethereum) return alert("Please Install Metamask to Login or Connect Wallet, Else Click Ok");
       const transactionContract = getEthereumContract();
       const availableTransactions = await transactionContract.getAllTranscations();
       const structuredTransactions = availableTransactions.map((transaction) => ({
@@ -55,7 +55,7 @@ export const TrasacationProvider = ({ children }) => {
 
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!ethereum) return alert("Please Install Metamask");
+      if (!ethereum) return alert("Please Install Metamask to Login or Connect Wallet, Else Click Ok to watch");
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
@@ -132,7 +132,7 @@ export const TrasacationProvider = ({ children }) => {
       window.reload();
 
     }catch(error){
-      console.log(error);
+      console.log(error.message);
 
       throw new Error("No ethereum object.");
     }
