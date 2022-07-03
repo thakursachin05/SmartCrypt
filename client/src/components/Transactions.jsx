@@ -25,7 +25,7 @@ const TransactionCard = ({addressTo , addressFrom, timestamp, message, keyword, 
                     </a>
                     <a href= {`https://goerli.etherscan.io/address${addressTo}`} target="_blank" rel='noopener noreferrer'>
                     <p className='text-white text-base'>
-                        To: {addressTo}
+                        To: {shortenAddress(addressTo)}
                     </p>
                     </a>
                     <p className='text-white text-base'>Amount : {amount} ETH</p>
@@ -64,16 +64,21 @@ const Transactions = () => {
                 </h3>
              ) : 
              (
+                <>
                 <h3 className='text-white text-3xl text-center my-2'>
                 Connect your account to see the latest transactions
             </h3>
+                <h4 className='text-white text-2xl text-center my-1'>
+                These are the Dummy Trnsactions to demonstrate
+            </h4>
+            </>
              )
             }
              {/* Connect your account to see the latest transactions */}
 
 
             <div className='flex flex-wrap justify-center items-center mt-10'>
-                {transactions.reverse().map((transaction, i) => (
+                {[...dummyData,...transactions].reverse().map((transaction, i) => (
                     <TransactionCard key={i} {...transaction}/>
                     ))}
                 </div>
